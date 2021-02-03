@@ -1,5 +1,65 @@
-/*css*/
 body{
     margin: 0;
     padding: 0;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+}
+p{
+    margin: 0;
+    padding: 0;
+}
+/*Common Alignements*/
+body,
+#start,
+#game-board,
+.box-result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start{
+    background-color: aquamarine;
+    width: 100px;
+    height: 30px;
+    font-size: x-large;
+    border: 1px solid black;
+}
+#title{
+    padding: 15px 0px;
+    margin: 0;
+    font-size: 40px;
+    font-weight: bold;
+}
+#display{
+    border: 1px solid gray;
+    height: 150px;
+    width: 400px;
+    margin-top: 25px;
+}
+#game-board{
+    border: 3px solid gray;
+    margin: 15px;    
+    height: fit-content;
+    width: fit-content;
+}
+.box-pick{
+    margin: 10px;
+}
+#results{
+    display: flex;
+    justify-content: space-around;
+    height: fit-content;    
+    width: 400px;
+}
+.box-score{
+    height: 40px;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+.box-result{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
 }

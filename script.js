@@ -1,10 +1,10 @@
-//JS
 let computerPlay = () => {
     let options = ['Rock', 'Paper', 'Scissors'];
     let randomIndex = Math.floor(Math.random() * options.length-1) + 1;
     return options[randomIndex];
 }
 
+//Delete this
 let playerPlay = () => {
     let sentencePrompt = 'Introduce your play (Rock, Paper or Scissors):';
     let playerSelection;
@@ -17,19 +17,22 @@ let playerPlay = () => {
     return playerSelection;
 }
 
+//This must show result at div display
 let playRound = (playerSelection, computerSelection) => {
     if(playerSelection === computerSelection){
+        let display = document.getElementById('display');        
         return `Tie! ${playerSelection} and ${computerSelection}`;
     }
     if(playerSelection === 'Paper' && computerSelection === 'Rock' ||
         playerSelection ===  'Rock' && computerSelection === 'Scissors' ||
-        playerSelection === 'Scissors' && computerSelection === 'Paper'){
+        playerSelection === 'Scissors' && computerSelection === 'Paper'){        
         return `You Win! ${playerSelection} beats ${computerSelection}`;
-    }else{
+    }else{        
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
     }
 }
 
+//refactor this.
 function game(){
     let playerScore = 0;
     let computerScore = 0;
@@ -51,4 +54,14 @@ function game(){
     }
 }
 
-game();
+function start(){
+    //Re-start the game
+}
+
+window.addEventListener('click', (e) => {
+    let playerSelection = e.target.id;
+    playerSelection = e.target.id.charAt(0).toUpperCase() + playerSelection.slice(1);
+    playRound(playerSelection, computerPlay());    
+});
+
+//game();

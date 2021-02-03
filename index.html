@@ -2,10 +2,32 @@
 <html>
     <head>
         <title>Rock Paper Scissor Game</title>
+        <!--Fontawesome's Icons import-->
+        <script src="https://kit.fontawesome.com/d1d6edd90f.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="style.css" />
         <script type="text/javascript" src="script.js" defer></script>
     </head>
     <body>
-        
+        <div id="title">Rock-Paper-Scissor</div>
+        <div id="start">Start</div>
+        <div id="game-board">
+            <div class="box-pick"><i id="rock"  class="far fa-hand-rock fa-6x"></i></div>
+            <div class="box-pick"><i id="paper" class="far fa-hand-paper fa-6x"></i></div>
+            <div class="box-pick"><i id="scissor" class="far fa-hand-scissors fa-6x"></i></div>
+        </div>
+        <div id="results">
+            <div class="box-result">
+                <p class="box-score" id="player-result"></p>
+                <i class="fas fa-user fa-2x"></i>
+            </div>
+            <div class="box-result">
+                <p class="box-score">VS</p>
+            </div>
+            <div class="box-result">
+                <p class="box-score" id="com-result"></p>
+                <i class="fas fa-robot fa-2x"></i>
+            </div>
+        </div>
+        <div id="display"></div>
     </body>
 </html>
