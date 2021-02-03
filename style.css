@@ -8,6 +8,9 @@ p{
     margin: 0;
     padding: 0;    
 }
+i{
+    color: #464C4C;
+}
 /*Common Alignements*/
 body,
 #start,
@@ -19,9 +22,10 @@ body,
 }
 
 #start{
-    background-color: aquamarine;
-    width: 100px;
-    height: 30px;
+    background-color: #80dbde;
+    color: #464C4C;
+    width: 150px;
+    height: 40px;
     font-size: x-large;
     border: 1px solid black;
     -webkit-box-shadow: 5px 5px rgba(179,179,179,0.65);
@@ -33,10 +37,11 @@ body,
     transform: translate(5px, 5px);
 }
 #title{
-    padding: 15px 0px;
+    padding: 35px 0px 25px 0px;
     margin: 0;
     font-size: 40px;
     font-weight: bold;
+    color: #464C4C;
 }
 #display{
     border: 1px solid gray;
@@ -45,15 +50,17 @@ body,
     padding: 10px;
     margin-top: 25px;
     overflow-y: auto;
+    background-color: #83bfbd;
+    color: #464C4C;
 }
 .game-board{
     border: 5px solid grey;
-    margin: 15px;    
+    margin: 25px 0 15px 0;
     height: fit-content;
     width: fit-content;
 }
 .box-pick{
-    margin: 10px;
+    margin: 20px;
 }
 #results{
     display: flex;
@@ -70,11 +77,10 @@ body,
     flex-direction: column;
     height: 100px;
 }
-.far{    
+.far{
     text-shadow: 5px 5px rgba(179,179,179,0.65);
 }
 .far:active{
     text-shadow: 0 0;    
     transform: translate(5px, 5px);
 }
-
