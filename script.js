@@ -1,67 +1,74 @@
+let playerScore = 0;
+let computerScore = 0;
+let round = 1;
+const MAX_WIN = 5;
+updateScore();
+
+//This function generates a random computer play.
 let computerPlay = () => {
     let options = ['Rock', 'Paper', 'Scissors'];
     let randomIndex = Math.floor(Math.random() * options.length-1) + 1;
     return options[randomIndex];
 }
 
-//Delete this
-let playerPlay = () => {
-    let sentencePrompt = 'Introduce your play (Rock, Paper or Scissors):';
-    let playerSelection;
-    while(playerSelection !== 'rock' && playerSelection !== 'paper' 
-            && playerSelection !== 'scissors'){
-        playerSelection = prompt(sentencePrompt);
-        playerSelection = playerSelection.toLowerCase();
-    }
-    playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-    return playerSelection;
-}
-
-//This must show result at div display
+//This function determines who is the winner and call updateScore()
 let playRound = (playerSelection, computerSelection) => {
-    if(playerSelection === computerSelection){
-        let display = document.getElementById('display');        
-        return `Tie! ${playerSelection} and ${computerSelection}`;
-    }
-    if(playerSelection === 'Paper' && computerSelection === 'Rock' ||
+    let display = document.getElementById('display');
+    let result = document.createElement('p');
+    if(playerSelection === computerSelection){        
+        result.textContent = `Tie! ${playerSelection} and ${computerSelection}`;        
+    }else if(playerSelection === 'Paper' && computerSelection === 'Rock' ||
         playerSelection ===  'Rock' && computerSelection === 'Scissors' ||
-        playerSelection === 'Scissors' && computerSelection === 'Paper'){        
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
-    }else{        
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
-    }
-}
-
-//refactor this.
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
-    let round = 1;
-    while(playerScore < 5 && computerScore < 5){
-        let result = playRound(playerPlay(), computerPlay());
-        if(result.indexOf('Win') !== -1){
-            playerScore++; 
-        }else if(result.indexOf('Lose') !== -1){
-            computerScore++;
-        }
-        console.log(`Round #${round++}: ${result}`)
-        console.log(`Score: ${playerScore} - ${computerScore}`)
-    }
-    if(playerScore === 5){
-        console.log(`PLAYER WIN!`);
+        playerSelection === 'Scissors' && computerSelection === 'Paper'){
+        playerScore++;
+        result.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;  
     }else{
-        console.log(`COM WIN!`);
+        computerScore++;
+        result.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
+    }
+    round++;
+    display.appendChild(result);
+    updateScore();
+}
+
+//This function updates the score at dom and checks if the game is over.
+function updateScore(){
+    if(playerScore <= MAX_WIN && computerScore <= MAX_WIN){
+        let player = document.getElementById('player-result');
+        player.textContent = playerScore;
+        let computer = document.getElementById('com-result');
+        computer.textContent = computerScore;
+    }
+    if(computerScore === MAX_WIN || playerScore === MAX_WIN){
+        let btn = Array.from(document.getElementsByClassName('btn'));
+        btn.forEach(e => e.classList.remove('btn'));
     }
 }
 
+//This function reboot the game.
 function start(){
-    //Re-start the game
+    //Removes btn class at user buttons. Disables the click
+    let btn = Array.from(document.getElementsByClassName('btn'));
+    btn.forEach(e => e.classList.add('btn'));
+    //Reset and updates the scores
+    playerScore = 0;
+    computerScore = 0;
+    round = 0;
+    updateScore();
+    //Cleans the display
+    let display = document.getElementById('display');
+    display.innerHTML = '';
 }
 
-window.addEventListener('click', (e) => {
-    let playerSelection = e.target.id;
-    playerSelection = e.target.id.charAt(0).toUpperCase() + playerSelection.slice(1);
-    playRound(playerSelection, computerPlay());    
+//Mouse control
+window.addEventListener('click', (e) => {    
+    //This check controls the click
+    if(e.target.className.includes('btn')){
+        let playerSelection = e.target.id;
+        playerSelection = e.target.id.charAt(0).toUpperCase() + playerSelection.slice(1);    
+        playRound(playerSelection, computerPlay());    
+    }
+    if(e.target.id === 'start'){
+        start();
+    }
 });
-
-//game();
