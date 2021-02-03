@@ -16,15 +16,15 @@ let playRound = (playerSelection, computerSelection) => {
     let display = document.getElementById('display');
     let result = document.createElement('p');
     if(playerSelection === computerSelection){        
-        result.textContent = `Tie! ${playerSelection} and ${computerSelection}`;        
+        result.textContent = `Round #${round}: Tie! ${playerSelection} and ${computerSelection}`;        
     }else if(playerSelection === 'Paper' && computerSelection === 'Rock' ||
         playerSelection ===  'Rock' && computerSelection === 'Scissors' ||
         playerSelection === 'Scissors' && computerSelection === 'Paper'){
         playerScore++;
-        result.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;  
+        result.textContent = `Round #${round}: Win! ${playerSelection} beats ${computerSelection}`;  
     }else{
         computerScore++;
-        result.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
+        result.textContent = `Round #${round}: Lose! ${computerSelection} beats ${playerSelection}`;
     }
     round++;
     display.appendChild(result);
@@ -40,15 +40,16 @@ function updateScore(){
         computer.textContent = computerScore;
     }
     if(computerScore === MAX_WIN || playerScore === MAX_WIN){
-        let btn = Array.from(document.getElementsByClassName('btn'));
+        //Removes btn class at user buttons. Disables the click
+        let btn = Array.from(document.getElementsByClassName('far'));
         btn.forEach(e => e.classList.remove('btn'));
     }
 }
 
 //This function reboot the game.
 function start(){
-    //Removes btn class at user buttons. Disables the click
-    let btn = Array.from(document.getElementsByClassName('btn'));
+    //Adds btn class at user buttons. Enables the click
+    let btn = Array.from(document.getElementsByClassName('far'));
     btn.forEach(e => e.classList.add('btn'));
     //Reset and updates the scores
     playerScore = 0;
