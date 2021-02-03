@@ -25,6 +25,13 @@ body,
     height: 30px;
     font-size: x-large;
     border: 1px solid black;
+    -webkit-box-shadow: 5px 5px rgba(179,179,179,0.65);
+    -moz-box-shadow: 5px 5px rgba(179,179,179,0.65);
+    box-shadow: 5px 5px rgba(179,179,179,0.65);
+}
+#start:active{
+    box-shadow: 0 0;    
+    transform: translate(5px, 5px);
 }
 #title{
     padding: 15px 0px;
@@ -64,4 +71,11 @@ body,
     display: flex;
     flex-direction: column;
     height: 100px;
+}
+.far{    
+    text-shadow: 5px 5px rgba(179,179,179,0.65);
+}
+.far:active{
+    text-shadow: 0 0;    
+    transform: translate(5px, 5px);
 }
