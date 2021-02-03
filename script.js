@@ -4,6 +4,7 @@ let round = 1;
 const MAX_WIN = 5;
 updateScore();
 let display = document.getElementById('display');
+let gameBoard = document.getElementsByClassName('game-board');
 
 //This function generates a random computer play.
 let computerPlay = () => {
@@ -44,10 +45,15 @@ function updateScore(){
         let btn = Array.from(document.getElementsByClassName('far'));
         btn.forEach(e => e.classList.remove('btn'));
         
-        //Shows final Score at display
+        //Shows final Score at display and changes gameboard border color
         let finalScore = document.createElement('p');
-        computerScore === MAX_WIN ? finalScore.textContent = 'You Lose!' : 
-                finalScore.textContent = 'You Win!';
+        if(computerScore === MAX_WIN){
+            finalScore.textContent = 'You Lose!';
+            gameBoard[0].setAttribute('style', 'border-color: red');
+        }else{
+            finalScore.textContent = 'You Win!';
+            gameBoard[0].setAttribute('style', 'border-color: green');
+        }          
         finalScore.setAttribute('style', 'font-size: 20px; font-weight: bold');
         display.insertBefore(finalScore,display.firstChild);        
     }
@@ -66,6 +72,8 @@ function start(){
     //Cleans the display
     let display = document.getElementById('display');
     display.innerHTML = '';
+    //Turns gameboard border to grey
+    gameBoard[0].setAttribute('style', 'border-color: grey');
 }
 
 //Mouse control

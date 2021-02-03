@@ -2,7 +2,6 @@ body{
     margin: 0;
     padding: 0;
     font-family: monospace;
-    display: flex;
     flex-direction: column;
 }
 p{
@@ -12,7 +11,7 @@ p{
 /*Common Alignements*/
 body,
 #start,
-#game-board,
+.game-board,
 .box-result{
     display: flex;
     justify-content: center;
@@ -47,8 +46,8 @@ body,
     margin-top: 25px;
     overflow-y: auto;
 }
-#game-board{
-    border: 3px solid gray;
+.game-board{
+    border: 5px solid grey;
     margin: 15px;    
     height: fit-content;
     width: fit-content;
@@ -68,7 +67,6 @@ body,
     margin-bottom: 15px;
 }
 .box-result{
-    display: flex;
     flex-direction: column;
     height: 100px;
 }
@@ -79,3 +77,4 @@ body,
     text-shadow: 0 0;    
     transform: translate(5px, 5px);
 }
+
